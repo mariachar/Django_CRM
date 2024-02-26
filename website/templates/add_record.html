@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col-md-6 offset-md-3">
+    <h1 style = "color:#fcfefe;  background-color:#222831; text-align:center;" class="mb-4 p-3" > New Record: </h1>
+<br/>
+
+<form method="POST" action="{% url 'add_record' %}" class="mt-4">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class=" d-grid mx-auto btn btn-outline-dark">Save</button>
+</form>
+</div>
+{% endblock %}

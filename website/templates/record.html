@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class="mb-4" style="text-align: center;"> Customer Records: </h1>
+
+<div class=" mt-4 card text-center">
+    <div class="card-header emphasized" style="font-size: larger; color: #000000;">
+        <strong>{{ customer_record.first_name }}
+        {{ customer_record.last_name }}</strong>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><br/>
+        <div style="display: flex; flex-direction:column; align-items:center">
+            <strong>Email: </strong>{{ customer_record.email }}
+            <br/>
+            <strong>Phone: </strong>{{ customer_record.phone }}
+            <br/>
+            <strong>Address: </strong>{{ customer_record.address }}
+            <br/>
+            <strong>City: </strong>{{ customer_record.city }}
+            <br/>    
+            <strong>Zipcode: </strong>{{ customer_record.zipcode }}
+            <br/>
+        </div>
+    </div>
+    <div class="card-footer text-body-secondary">
+      {{ customer_record.created_at }}
+    </div>
+  </div>
+  <br/><br/>
+  <a href="{% url 'home' %}" class="btn btn-outline-info">Back</a>
+  <a href="{% url 'delete_record' customer_record.id %}" class="btn btn-outline-danger float-end" onclick="return confirm('Are you sure you want to permanently delete this record?')">Delete</a>
+  <a href="{% url 'edit_record' customer_record.id %}" class="btn btn-secondary d-block mx-auto" style="width: 150px;">Edit</a>
+  
+
+
+
+{% endblock %}

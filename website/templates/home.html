@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+{% if user.is_authenticated %}
+
+{% if query %}
+<h2 id="search-results">Search Results for "{{ query }}"</h2>
+
+{% if results %}
+  <ul>
+    {% for result in results %}
+      <li>{{ result.first_name }} {{ result.last_name }}</li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No results found.</p>
+{% endif %}
+{% endif %}
+
+<script>
+var searchResultsSection = document.getElementById('search-results');
+if (searchResultsSection) {
+  searchResultsSection.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+<h1 style = "color:#fcfefe;  background-color:#222831; text-align:center;" class="mb-4 p-3" > Customers </h1>
+
+<table class="table table-dark table-striped table-hover table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Email</th>
+      <th scope="col">Address</th>
+      <th scope="col">City</th>
+      <th scope="col">Zipcode</th>
+      <th scope="col">Date</th>
+      
+
+    </tr>
+  </thead>
+  <tbody>
+    
+      {% if records %}
+
+        {% for record in records %}
+          <tr>
+            <td><a href ="{% url 'record' record.id %}"> {{ record.id }}</a></td>
+            <td>{{ record.first_name }}
+            {{ record.last_name }}</td>
+            <td>{{ record.email }}</td>
+            <td>{{ record.phone }}</td>
+            <td>{{ record.address }}</td>
+            <td>{{ record.city }}</td>
+            <td>{{ record.zipcode }}</td>
+            <td>{{ record.created_at }}</td>
+          </tr>
+        {% endfor %}
+
+      {% endif %}
+    
+  </tbody>
+</table>
+
+
+
+{% else %}
+
+<head>
+<h1 class="mt-4 mb-4 text-center">Login</h1>
+<br/>
+</head>
+
+<body>
+  <form method="POST" action="{% url 'home' %}" class="mt-4 mx-auto" style="width: 300px;">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="exampleInputName" class="form-label">Username:</label>
+        <input type="text" class="form-control" name="username" required style="width: 100%;">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password:</label>
+        <input type="password" class="form-control" name="password" required style="width: 100%;">
+    </div>
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Remember me</label>
+    </div>
+    <button type="submit" class="d-grid mx-auto btn btn-outline-dark mt-4">Login</button>
+</form>
+
+</body>
+
+
+{% endif %}
+
+{% endblock %}
