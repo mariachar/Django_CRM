@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-qe1=4g4nzf!$$c90t0a599fgr_+&$i%^5j@regl813nm9hv#%(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django-crm-zvly.onrender.com']
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -68,7 +68,7 @@ DATABASES = {
         'NAME': 'mariaDB',
         'USER': 'root',
         'PASSWORD': 'hiFri3nd!',
-        'HOST': 'django-crm-zvly.onrender.com',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
