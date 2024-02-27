@@ -1,7 +1,7 @@
 import mysql.connector 
 
 dataBase = mysql.connector.connect(
-    host = "localhost",
+    host = "django-crm-zvly.onrender.com",
     user = "root",
     passwd = "hiFri3nd!",
 )
