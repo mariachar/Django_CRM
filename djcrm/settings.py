@@ -68,7 +68,7 @@ DATABASES = {
         'NAME': 'mariaDB',
         'USER': 'root',
         'PASSWORD': 'hiFri3nd!',
-        'HOST': 'localhost',
+        'HOST': 'django-crm-zvly.onrender.com',
         'PORT': '3306',
     }
 }
